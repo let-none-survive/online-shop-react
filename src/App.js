@@ -22,7 +22,7 @@ class App extends Component {
       <Container>
       <MenuComponent />
         <Card.Group itemsPerRow={4}>
-          {!isReady ? 'Loading...' : books.map(book => (<BookCard title={book.title} author={book.author} price={book.price} image={book.image  } />))}
+          {!isReady ? 'Loading...' : books.map(book => (<BookCard key={book.id} title={book.title} author={book.author} price={book.price} image={book.image  } />))}
         </Card.Group>
       </Container>
   )}
