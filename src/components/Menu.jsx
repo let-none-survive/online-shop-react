@@ -1,21 +1,49 @@
-import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Menu, Label, Popup } from 'semantic-ui-react';
 
-const MenuComponent = () => (
-  <Menu>
-    <Menu.Item name='browse' onClick={this.handleItemClick}>
-      Книжный магазин
-    </Menu.Item>
+import { removeFromCart } from '../actions/cart';
 
-    <Menu.Menu position='right'>
-      <Menu.Item name='signup' onClick={this.handleItemClick}>
-       Итого: <b>0</b>USD
+import { Cart } from './';
+
+const MenuComponent = ({ totalUsd, count, items, removeFromCart }) => (
+  <Menu >
+    <Menu.Item header>Книжный магазин</Menu.Item>
+    <Menu.Menu position="right">
+      <Menu.Item>
+        Итого: &nbsp;<b>{totalUsd} usd</b>
       </Menu.Item>
-
-      <Menu.Item name='help' onClick={this.handleItemClick}>
-       Корзина (<b>0</b>)
+      <Menu.Item onClick={() => {}}>
+        <Popup
+          className="cart-popup"
+          trigger={
+            <div>
+              Корзина <Label color={count ? 'teal' : 'grey'}>{count}</Label>
+            </div>
+          }
+          on="click">
+          {items && <Cart items={items} remove={removeFromCart} />}
+        </Popup>
       </Menu.Item>
     </Menu.Menu>
   </Menu>
-)
-export default MenuComponent
+);
+
+const getValue = (items, prop) =>
+  items.reduce((prev, obj) => prev + obj[prop], 0);
+
+const mapStateToProps = (_, { items = [] }) => {
+  const totalUsd = getValue(items, 'total');
+  const count = getValue(items, 'count');
+  return {
+    totalUsd,
+    count,
+    items
+  };
+};
+
+const mapDispatchToProps = {
+  removeFromCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuComponent);

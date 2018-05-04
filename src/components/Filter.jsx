@@ -1,18 +1,39 @@
-import React, {Component} from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Input, Menu } from 'semantic-ui-react';
 
-const Filter = (props) => {
-  const {setFilter, filterBy} = props;
+import { setFilter } from '../actions/filter';
+
+const Sidebar = ({ filterBy, setFilter}) => {
+  const filters = [
+    { type: 'all', label: 'Все' },
+    { type: 'popular', label: 'Популярные' },
+    { type: 'prichigh', label: 'Цена (дорогие)' },
+    { type: 'priceLow', label: 'Цена (дешевые)' },
+    { type: 'author', label: 'Автор' }
+  ];
 
   return (
     <Menu secondary>
-      <Menu.Item active={filterBy === 'all'} onClick={setFilter.bind(this, 'all')} >Все</Menu.Item>
-      <Menu.Item  active={filterBy === 'priceHigh'} onClick={setFilter.bind(this, 'priceHigh')} >Цена (дорогие)</Menu.Item>
-      <Menu.Item  active={filterBy === 'priceLow'} onClick={setFilter.bind(this, 'priceLow')} >Цена (дешевые)</Menu.Item>
-      <Menu.Item  active={filterBy === 'author'} onClick={setFilter.bind(this, 'author')} >По автору</Menu.Item>
+      {filters.map((o, i) => (
+        <Menu.Item
+          key={i}
+          name="inbox"
+          active={filterBy === o.type}
+          onClick={setFilter.bind(this, o.type)}>
+          {o.label}
+        </Menu.Item>
+      ))}
     </Menu>
+  );
+};
 
-  )
-}
+const mapStateToProps = ({ filter: { filterBy, searchQuery } }) => ({
+  filterBy,
+});
 
-export default Filter;
+const mapDispatchToProps = {
+  setFilter,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

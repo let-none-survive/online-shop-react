@@ -1,4 +1,4 @@
-export const setFilter= filter => ({
+export const setFilter= type => ({
   type: 'SET_FILTER',
-  payload: filter
+  payload: type
 })
