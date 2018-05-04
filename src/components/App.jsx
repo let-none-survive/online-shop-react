@@ -15,7 +15,6 @@ class App extends Component {
     }
 
   render() {
-    console.log(this.props);
     const { items, isReady, setFilter, cartItems, getCartItem, addToCart, removeFromCart } = this.props;
     return (
       <Container>
