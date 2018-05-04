@@ -7,7 +7,7 @@ import { setFilter } from '../actions/filter';
 const Sidebar = ({ filterBy, setFilter}) => {
   const filters = [
     { type: 'all', label: 'Все' },
-    { type: 'prichigh', label: 'Цена (дорогие)' },
+    { type: 'priceHigh', label: 'Цена (дорогие)' },
     { type: 'priceLow', label: 'Цена (дешевые)' },
     { type: 'author', label: 'Автор' }
   ];
