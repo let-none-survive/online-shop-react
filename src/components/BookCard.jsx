@@ -42,7 +42,7 @@ const BookCard = ({title,description, author, price, image, addToCart, cartItem,
           )}
         </Grid.Row>
       </Grid>
-      <Modal price={price} image={image} title={title} description={description} addToCart={addToCart} cartItem={cartItem} id={id}/>
+      <Modal price={price} author={author} image={image} title={title} description={description} addToCart={addToCart} cartItem={cartItem} id={id}/>
       <a>
         <Icon name='usd' />
         {price}
