@@ -6,14 +6,11 @@ import App from '../components/App.jsx';
 import orderBy from 'lodash/orderBy';
 import groupBy from 'lodash/groupBy';
 import find from 'lodash/find';
-import filter from 'lodash/filter';
 
 import * as books from '../actions/books';
 import * as cart from '../actions/cart';
 
 const filterBooks = (type,  books) => {
-  window.orderBy = orderBy;
-  window.books = books;
   if (!books) {
     return null;
   }
@@ -33,6 +30,7 @@ const filterBooks = (type,  books) => {
 
 const getCartItems = (ids, books) => {
   const keys = Object.keys(ids);
+  console.log(ids);
   return keys.map(id => ({
     id: parseInt(id),
     image: books[id].image,

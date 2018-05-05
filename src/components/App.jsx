@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react'
 import axios from 'axios'
-import { Menu, Book, Filter, Modal } from './';
+import { Menu, Book, Filter } from './';
 
 import { Card } from 'semantic-ui-react'
 
@@ -15,7 +15,7 @@ class App extends Component {
     }
 
   render() {
-    const { items, isReady, setFilter, cartItems, getCartItem, addToCart, removeFromCart } = this.props;
+    const { items, isReady, cartItems, getCartItem, addToCart, removeFromCart } = this.props;
     return (
       <Container>
       <Menu items={cartItems} />

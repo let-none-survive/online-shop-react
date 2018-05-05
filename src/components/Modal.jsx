@@ -1,6 +1,5 @@
 import React from 'react'
-import Book from './BookCard.jsx'
-import { Button, Header, Icon, Image, Modal, Grid, Label } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Label } from 'semantic-ui-react'
 
 const ModalButton = ({price, title, image, description, book, addToCart, cartItem, id}) => (
   <Modal size='large' trigger={

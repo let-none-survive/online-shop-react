@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
         ...state,
         filterBy: action.payload
       };
+    default:
+      return state
   }
-  
-  return state;
 };
