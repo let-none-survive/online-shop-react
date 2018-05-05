@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react'
 import axios from 'axios'
-import { Menu, Book, Filter } from './';
+import { Menu, Book, Filter, Modal } from './';
 
 import { Card } from 'semantic-ui-react'
 

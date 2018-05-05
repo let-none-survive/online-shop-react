@@ -15,6 +15,7 @@ const MenuComponent = ({ totalUsd, count, items, removeFromCart }) => (
       </Menu.Item>
       <Menu.Item onClick={() => {}}>
         <Popup
+          wide="very"
           className="cart-popup"
           trigger={
             <div>
